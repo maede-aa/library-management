@@ -1,26 +1,31 @@
 package library;
 
+import datastructures.interfaces.List;
+import datastructures.lists.CustomArrayList;
+
 public class Member {
     private String memberId;
     private String name;
-    // TODO: Define a data structure to hold transactions of each member
+    private List<Transaction> transactionList;
 
     public Member(String memberId, String name) {
         this.memberId = memberId;
         this.name = name;
-        // TODO: Initialize your data structure here
+        this.transactionList = new CustomArrayList<>();
     }
 
     public String getMemberId() { return memberId; }
     public String getName() { return name; }
 
     public void addTransaction(Transaction transaction) {
-        // TODO
+        transactionList.add(transaction);
     }
 
     public Transaction getLastTransaction() {
-        // TODO
-        return null;
+        if(transactionList.isEmpty())
+            return null;
+
+        return transactionList.get(transactionList.size() - 1);
     }
 
     @Override
